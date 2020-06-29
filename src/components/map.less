@@ -1,0 +1,83 @@
+//地图样式
+.leaflet-control-attribution {
+	display: none;
+}
+.map {
+	.van-popup--bottom{
+		// bottom: 100px;
+	}
+	
+		.btnGroup{
+			width: 270px;
+			margin: 0 auto;
+		}
+		.item1,.item2,.item{
+			float: left;
+			height: 70px;
+			width: 70px;
+			line-height: 70px;
+			text-align: center;
+			color: #fff;
+			border-radius: 50%;
+			background: linear-gradient(to right, rgb(33, 135, 76) , rgb(25, 202, 72));
+			position: absolute;
+			bottom: 160px;
+			// top: 70px;
+			left: 50%;
+			transform: translateX(-50%);
+			font-size: 16px;
+			transition: all .3s;
+			z-index: 999;
+			.title{
+				width: 90%;
+				position: absolute;
+				top: 50px;
+				text-align: center;
+			}
+		}
+		
+	
+	
+	[class*="van-hairline"]::after {
+		border: 0;
+	}
+	.point-enter-active, .point-leave-active {
+		transition: all .3s
+	}
+	.point-enter, .point-leave-to {
+		bottom: 50px;
+		opacity: 0
+	}
+	.daka-enter-active, .daka-leave-active {
+		transition: all .3s
+	}
+	.daka-enter, .daka-leave-to {
+		bottom: 50px;
+		left: 50%;
+		transform: translateX(-50%);
+		opacity: 0
+	}
+	.poly-enter-active, .poly-leave-active {
+		transition: all .3s
+	}
+	.poly-enter, .poly-leave-to {
+		bottom: 50px;
+		left: 50%;
+		transform: translateX(-50%);
+		opacity: 0
+	}
+
+}
+.tool,.toolCe,.biaoZhu{
+	position: absolute;
+	right: 10px;
+	top: 20px;
+	width: 100px;
+	
+}
+.toolCe{
+	right: 100px;
+}
+.biaoZhu{
+	right: 200px;
+}

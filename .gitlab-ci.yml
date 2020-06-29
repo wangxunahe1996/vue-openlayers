@@ -1,0 +1,35 @@
+stages:
+  - deploy
+
+# 生产环境
+deploy_prd:
+  script:
+    - pwd
+    - npm install
+    - npm run build
+    - ssh root@114.55.165.49 "rm -fr /www/wap/*"
+    - scp -r dist/* root@114.55.165.49:/www/wap/
+  stage: deploy
+  only:
+    - master
+  except:
+    - schedules
+  tags:
+    - product-luoshe
+
+# 开发环境
+deploy_dev:
+  script:
+    - pwd
+    - npm install
+    - npm run build
+    - ssh root@192.168.14.231 "rm -fr /www/wap/*"
+    - scp -r dist/* root@192.168.14.231:/www/wap/
+  stage: deploy
+  only:
+    - schedules
+    - develop
+  tags:
+    - develop
+  allow_failure: true
+  retry: 1
