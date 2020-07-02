@@ -1,7 +1,7 @@
 
 const CompressionPlugin = require("compression-webpack-plugin");
 module.exports = {
-	publicPath: "/",
+	publicPath: "/vue-openlayers/",
 	lintOnSave: false,
 	// outputDir:'wap',
 	css: {
