@@ -71,6 +71,8 @@ instance.interceptors.request.use(
 );
 // 响应拦截器
 instance.interceptors.response.use(res => {
+
+
 	if (res.data.resultCode == 0) {
 		return Promise.resolve(res.data);
 	} else {
