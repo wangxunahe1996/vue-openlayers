@@ -57,20 +57,20 @@ import { createBox } from "ol/interaction/Draw";
 export default {
 	name: "app-map1",
 	data() {
-		return { 
+		return {
 			borderUrl: "",
-			td2_satellite: `http://t${Math.round(   //TK后接自己的tk
+			td2_satellite: `http://t${Math.round(
 				Math.random() * 7
-			)}.tianditu.gov.cn/img_c/wmts?&tk=`,
+			)}.tianditu.gov.cn/img_c/wmts?&tk=f2271d8cba86805bab5b7c703aebcec4`,
 			td1_satellite: `http://t${Math.round(
 				Math.random() * 7
-			)}.tianditu.gov.cn/cia_c/wmts?&tk=`,
+			)}.tianditu.gov.cn/cia_c/wmts?&tk=f2271d8cba86805bab5b7c703aebcec4`,
 			td1_2d: `http://t${Math.round(
 				Math.random() * 7
-			)}.tianditu.gov.cn/vec_c/wmts?&tk=`,
+			)}.tianditu.gov.cn/vec_c/wmts?&tk=f2271d8cba86805bab5b7c703aebcec4`,
 			td2_2d: `http://t${Math.round(
 				Math.random() * 7
-			)}.tianditu.gov.cn/cva_c/wmts?&tk=`,
+			)}.tianditu.gov.cn/cva_c/wmts?&tk=f2271d8cba86805bab5b7c703aebcec4`,
 			buttonSize: "satellite",
 			pointData: [
 				//标注数据
