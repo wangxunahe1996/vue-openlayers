@@ -243,12 +243,15 @@ export default {
 				source: new ImageWMS({
 					url: "http://192.168.140.117:8080/geoserver/cite/wms",
 					params: {
-						LAYERS: "cite:shaoxing2m",
+						LAYERS: "cite:luoshe9yue",
 						FORMAT: "image/jpeg",
 						REQUEST: "GetMap",
 						VERSION: "1.1.1",
 						SERVICE: "WMS",
 						SRS: "EPSG:4326",
+						WIDTH:"768",
+						HEIGHT:"650",
+						TRANSPARENT: "true",
 						exceptions: "application/vnd.ogc.se_inimage"
 					}
 				})
