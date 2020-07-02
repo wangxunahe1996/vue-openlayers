@@ -17,13 +17,14 @@
 			<Button @click="spaceMeasureFun('LineString')">测距</Button>
 			<Button @click="spaceMeasureFun('Polygon')">测面</Button>
 			<Button @click="spaceMeasureFun('Point')">测点</Button><br>
+			<Button @click="addWMSLayer()">添加栅格数据图层</Button><br>
 			<!-- <Button @click="">测距</Button> -->
 			<Button @click="clearAll">清除</Button>
 		</div>
 	</div>
 </template>
 <script>
-let map, satellite, map2D;
+let map, satellite, map2D, imgWms;
 import { Map, View } from "ol";
 import "ol/ol.css";
 import TileLayer from "ol/layer/Tile";
@@ -54,6 +55,7 @@ import OlHeatmapLayer from "ol/layer/Heatmap";
 import GeoJSON from "ol/format/GeoJSON";
 import { Cluster } from "ol/source";
 import { createBox } from "ol/interaction/Draw";
+import ImageLayer from "ol/layer/Image";
 export default {
 	name: "app-map1",
 	data() {
@@ -229,6 +231,29 @@ export default {
 				layers: [tian_di_tu_2D_layer, tian_di_tu_2D_annotation]
 			});
 			this.singleClickFun();
+		},
+		//添加栅格数据图层
+		addWMSLayer() {
+			if (imgWms) {
+				map.removeLayer(imgWms);
+			}
+			imgWms = new ImageLayer({
+				title: "栅格图层",
+				// opactiy:'0.1',
+				source: new ImageWMS({
+					url: "http://192.168.140.117:8080/geoserver/cite/wms",
+					params: {
+						LAYERS: "cite:shaoxing2m",
+						FORMAT: "image/jpeg",
+						REQUEST: "GetMap",
+						VERSION: "1.1.1",
+						SERVICE: "WMS",
+						SRS: "EPSG:4326",
+						exceptions: "application/vnd.ogc.se_inimage"
+					}
+				})
+			});
+			map.addLayer(imgWms);
 		},
 		//切换底图
 		changeMap(name) {
@@ -680,10 +705,13 @@ export default {
 		//清除所有
 		clearAll() {
 			this.removeLayerByName("标注");
-            this.removeLayerByName("标绘");
-            this.removeLayerByName("空间测量");
-            this.removePlotting();
-            this.removeAllOverlay()
+			this.removeLayerByName("标绘");
+			this.removeLayerByName("空间测量");
+			this.removePlotting();
+			this.removeAllOverlay();
+			if (imgWms) {
+				map.removeLayer(imgWms);
+			}
 		}
 	}
 };
